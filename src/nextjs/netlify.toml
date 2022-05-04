@@ -1,0 +1,9 @@
+[build]
+  command = "yarn install && yarn export"
+  publish = "out"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[template.environment]
+  LIFF_ID = "Your LIFF ID which is aquired from LINE Dev Center"
