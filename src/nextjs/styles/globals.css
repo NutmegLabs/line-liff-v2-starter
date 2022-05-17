@@ -74,6 +74,15 @@ html, body {
   gap: 1rem;
 }
 
+.home__logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 10px;
+}
+
 .home__buttons__button {
   min-width: 250px;
   cursor: pointer;

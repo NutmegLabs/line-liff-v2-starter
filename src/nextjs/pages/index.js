@@ -8,6 +8,10 @@ export default function Home(props) {
    *
    *  Learn more about LIFF API documentation (https://developers.line.biz/en/reference/liff)
    **/
+
+  const { liff } = props;
+  console.log('Home', liff);
+
   return (
     <div>
       <Head>
@@ -66,6 +70,23 @@ export default function Home(props) {
             LINE Developers Console
           </a>
         </div>
+
+        <div className="home__logout">
+          <button
+            className="home__buttons__button button--primary"
+            onClick={() => {
+                console.log('logout before');
+              if (liff.isLoggedIn()) {
+                console.log('logout after');
+                liff.logout();
+                window.location.reload();
+              }
+            }}
+          >
+            Logout
+          </button>
+        </div>
+
       </div>
     </div>
   );
