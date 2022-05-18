@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import { useState, useEffect } from "react";
+import querystring from 'query-string';
 
 function MyApp({ Component, pageProps, router }) {
   const [liffObject, setLiffObject] = useState(null);
@@ -17,7 +18,21 @@ function MyApp({ Component, pageProps, router }) {
           console.log("liff.init() done");
           setLiffObject(liff);
           if (!liff.isLoggedIn()) {
-            liff.login({ redirectUri:"https://hieizan.book.stg.ntmg.com/" });
+            const params = {
+              response_type: 'code',
+              client_id: '1657140602',
+              redirect_uri: 'https://hieizan.book.stg.ntmg.com/?date=2022-05-18',
+              state: 'aaaaabbbbbcccc',
+              scope: 'openid',
+              bot_prompt: 'Normal',
+              prompt: "consent",
+            }
+
+            const queryString = querystring.stringify(params);
+
+            console.log(queryString);
+
+            window.location.href = 'https://access.line.me/oauth2/v2.1/authorize?' + queryString
           }
         })
         .catch((error) => {
